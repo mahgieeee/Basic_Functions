@@ -22,7 +22,13 @@ class SolutionsTests(unittest.TestCase):
             self.assertTrue(is_four_of_kind([x, "5", x, x, x]))
             self.assertTrue(is_four_of_kind([x, x, "5", x, x]))
             self.assertTrue(is_four_of_kind(["5", x, x, x, x]))
- 
+    
+    def test_not_merge(self):
+        #test all numbers in list are in ascending order
+        a = [2, 3]
+        b = [5, 9, 15]
+        for x in self.merge(a,b):
+            self.assertGreaterEqual(a,b)
  
 if __name__ == '__main__':
     unittest.main()
