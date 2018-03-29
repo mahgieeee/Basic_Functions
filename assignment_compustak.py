@@ -28,24 +28,41 @@ def pairs(input):
                 unique_tuples.append((key, numbers))
             
     return unique_tuples
+    # Solution goes here
 
-# check for nonequal in the list first, if num_nonequal > 1 return False
-# can't have more than four of the same kind if num_nonequal == 0 return False
+
 def is_four_of_kind(hand):
     """hand is a list of 5 strings representing card ranks; function is a predicate"""
+    alpha = ["J", "Q", "K", "A"]
+    num_list = list(range(2,11))
     count = 0
-    next_x = 1
-    for x in hand:
-        x = x.upper()
-        if x not in hand[next_x:len(hand)]: #other than itself
-            print (x)
-            count = count + 1 # number of unique strings in the hand
-        next_x = next_x + 1
-        
-    if count > 1 or count == 0:
+    next_rank = 1
+    diff_hand = []
+    for rank in hand:
+        rank = rank.upper()
+        if rank in alpha or rank in str(num_list):
+            if rank not in hand[next_rank:len(hand)]: # other than itself
+                diff_hand.append(rank)
+                count = count + 1 # number of unique strings in the hand
+            next_rank = next_rank + 1
+    # for 4/5 strings: only can be 2 unique letters 
+    print(count)
+    sum_rank1 = 0
+    sum_rank2 = 0
+    if count == 2:
+        for rank in hand:
+            if rank == diff_hand[0]:
+                sum_rank1 = sum_rank1 + 1
+            elif rank == diff_hand[1]:
+                sum_rank2 = sum_rank2 + 1
+        print(sum_rank1)
+        print(sum_rank2)
+        if sum_rank1 == 4 or sum_rank2 == 4:
+            return True
         return False
     else:
-        return True
+        return False
+    # Solution goes here
     
 def merge(a, b):
     """a and b are sorted list of ints; function returns array of sorted ints"""
@@ -89,13 +106,12 @@ def dec_to_base_x(base, num):
             
         start_exp = start_exp - 1
 
-    print (num_count)    
-         
+    print (num_count)   
     # Solution goes here
     
 if __name__ == '__main__':
     #print(pairs([8, 8, 8, 8, 8]))
-    #print(is_four_of_kind(["K","Q","Q","K","K"]))
+    print(is_four_of_kind(["5","5","K","5","5"]))
     #merge([1, 3, 5, 10], [2, 4, 4, 6, 8])
-    dec_to_base_x(8, 140)
+    #dec_to_base_x(8, 140)
     #dec_to_base_x(2, 8) 
