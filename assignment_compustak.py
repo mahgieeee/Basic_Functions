@@ -85,7 +85,7 @@ def merge(a, b):
         if index_b > len(b)-1: 
             merged_list.extend(a[index_a: ]) 
                 
-    print (merged_list)
+    return merged_list
     # Solution goes here
     
 def dec_to_base_x(base, num):
@@ -115,6 +115,6 @@ def dec_to_base_x(base, num):
 if __name__ == '__main__':
     print(pairs([2, 8, 8, 8, 8]))
     print(is_four_of_kind(["5","5","K","5","5"]))
-    #merge([1, 3, 5, 10], [2, 4, 4, 6, 8])
+    print(merge([1, 3, 5, 9, 10], [1, 2, 3, 4, 5, 6, 8, 10]))
     print(dec_to_base_x(8, 140))
     print(dec_to_base_x(2, 8)) 
